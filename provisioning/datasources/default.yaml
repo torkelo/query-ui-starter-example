@@ -1,0 +1,20 @@
+apiVersion: 1
+
+datasources:
+  # Used by the "Tabs and sub pages" demo.
+  - name: gdev-testdata
+    uid: gdev-testdata
+    type: grafana-testdata-datasource
+    isDefault: false
+
+  # Used by the "Drilldown metrics" demo. The Prometheus container in
+  # docker-compose.yaml scrapes Grafana itself, so there are metrics to browse.
+  - name: gdev-prometheus
+    uid: gdev-prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    jsonData:
+      manageAlerts: false
+      prometheusType: Prometheus

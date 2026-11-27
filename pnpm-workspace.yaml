@@ -1,0 +1,17 @@
+# pnpm settings (pnpm reads these from this file rather than from package.json).
+
+# Dependency build scripts are blocked by default. Only the packages listed
+# here may run theirs, which keeps arbitrary install-time code out of local
+# development and CI.
+allowBuilds:
+  '@swc/core': true
+  # Pulled in by sass, which only uses it for its own `--watch` CLI mode. The
+  # webpack build doesn't need it, so its install script stays blocked.
+  '@parcel/watcher': false
+
+# pnpm waits before installing freshly published versions as a supply-chain
+# safeguard. @grafana/query-ui@0.0.2 was published too recently to pass, so it
+# is exempted explicitly. Safe to remove once that version has aged past the
+# cutoff.
+minimumReleaseAgeExclude:
+  - '@grafana/query-ui@0.0.2'

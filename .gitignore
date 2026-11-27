@@ -1,0 +1,65 @@
+# Allowlist: ignore everything by default, then explicitly un-ignore the files
+# that belong in the repository. Anything new (including .env files, cloud
+# credentials and session logs) stays out of git until it is added here.
+*
+
+# Directories must be un-ignored before their contents can be.
+!*/
+
+# Never commit secrets or local state, even inside an un-ignored directory.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+.gcloud/
+.npmrc
+**/node_modules/
+**/dist/
+**/coverage/
+**/artifacts/
+**/work/
+**/ci/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+.eslintcache
+*.log
+.idea/
+.vscode/
+.claude/
+.DS_Store
+
+# Root files
+!/.gitignore
+!/.cprc.json
+!/.nvmrc
+!/.prettierignore
+!/.prettierrc.js
+!/AGENTS.md
+!/CHANGELOG.md
+!/CLAUDE.md
+!/GEMINI.md
+!/LICENSE
+!/README.md
+!/docker-compose.yaml
+!/eslint.config.mjs
+!/jest-setup.js
+!/jest.config.js
+!/package.json
+!/playwright.config.ts
+!/pnpm-lock.yaml
+!/pnpm-workspace.yaml
+!/tsconfig.json
+!/webpack.config.ts
+
+# Project directories
+!/.config/**
+!/.github/**
+!/docker/**
+!/provisioning/**
+!/src/**
+!/tests/**
